@@ -11,9 +11,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+
    	<!-- bootstrap link -->
 	<%@ include file="/WEB-INF/views/common/link.jspf"%>
- 
+
+
+
 
 </head>
   
@@ -75,12 +79,13 @@
 
     <!-- 배경이미지 변경예정 /////// -->
     <!-- 적용되지 않는 이미지가 있음....(무료 다운한 것, 카카오로그인버튼 이미지는 가능) -->
-	<div class="site-blocks-cover" style="background-image: url(/RecommendBook_B/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+	<div class="site-blocks-cover" style="background-image: url(/RecommendBook_B/images/book2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
 
       <div class="container">
         <div class="row row-custom align-items-center">
           <div class="col-md-10">
-            <h1 class="mb-2 text-black w-75"><span class="font-weight-bold">Recommend a book</span> for you</h1>
+            <h1 class="mb-2 text-white w-70"><span class="font-weight-bold">Recommend a book</span></h1>
+            <h1>for you</h1>
             
             <!----- search bar ------>
             <div class="job-search">
@@ -174,6 +179,8 @@
               </div>
             </div>
             <!----- search bar END ------>
+            
+            
           </div>
         </div>
       </div>
@@ -181,8 +188,8 @@
     
 
 	<!--------------------추천도서 검색 결과 리스트 ------------------------>
-	<!-- 최대 5개 -> 6개 출력으로 변경 -->
-	<!-- 검색결과에 순위 표기 -->
+	<!-- ///////////////// 리스트 타입 변경예정 -->
+	<!-- 검색결과에 순위 표기 (max 5개)-->
     <div class="site-section">
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
@@ -241,20 +248,32 @@
            <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
            
      		  <!-- 게시글 제목, 난이도 -->
-     		  <!-- /////// 난이도 색상 변경예정  -->
-              <div class="mb-4 mb-md-0 mr-5">
-               <div class="job-post-item-header d-flex align-items-center">
-                 <h2 class="mr-3 text-black h4">${dto.title}</h2>
-                 <div class="badge-wrap">
-                  <span class="bg-primary text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
-                 </div>
+		 	   <div class="mb-4 mb-md-0 mr-5">
+                 <div class="job-post-item-header d-flex align-items-center">
+                   <h2 class="mr-3 text-black h4">${dto.title}</h2>
+                   <div class="badge-wrap">
+                   
+				<c:choose>
+					<c:when test="${dto.bookLevel == '상'}">
+						<span class="bg-danger text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
+					</c:when>
+					<c:when test="${dto.bookLevel == '중'}">
+						<span class="bg-info text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
+					</c:when>
+					<c:when test="${dto.bookLevel == '하'}">
+						<span class="bg-warning text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
+					</c:when>
+				</c:choose>
+                   
+                   </div>
                </div>
+
                
+
                <!-- 도서명, 작가명 -->
-               <!--/////// 아이콘 변경예정 (책,연필) -->
                <div class="job-post-item-body d-block d-md-flex"> 
-                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>${dto.bookName }</div>
-                 <div><span class="fl-bigmug-line-big104"></span>${dto.writer}</div>
+                 <div class="mr-3"><span class="icon-book"></span>${dto.bookName }</div>
+                 <div><span class="icon-pencil"></span>${dto.writer}</div>
                </div>
               </div>
 

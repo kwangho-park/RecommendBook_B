@@ -46,6 +46,7 @@
         <h2 class="mb-0">New Post</h2>
       </div>
     </div>
+    
 
     
     
@@ -60,46 +61,68 @@
             <form name="postClient" action="<c:url value='/post/savePost'/>" method="post" onsubmit="return postValidation()" class="p-5 bg-white">
               
               <!-- 도서명 -->
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
+              <div class="form-group">
+              	<div class="form-row">
                   <label class="font-weight-bold" for="bookName">도 서 명</label>
-                  <input type="text" name="bookName" id="bookName" class="form-control">
-                </div>
+              	</div>
+              	<div class="form-row">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    <input type="text" name="bookName" id="bookName" class="form-control">
+                  </div>
+              	</div>
               </div>
 
+
+
 			  <!-- 작가명 -->
-              <div class="row form-group mb-5">
-                <div class="col-md-12 mb-3 mb-md-0">
+              <div class="form-group mb-5">
+                <div class="form-row">
                   <label class="font-weight-bold" for="writer">작 가 명</label>
-                  <input type="text" name="writer" id="writer" class="form-control">
                 </div>
+   				<div class="form-row">
+   				  <div class="col-md-6 mb-3 mb-md-0">
+                    <input type="text" name="writer" id="writer" class="form-control">
+                  </div>
+   				</div>             
               </div>
 
 
 			  <!-- 제목 -->
-              <div class="row form-group mb-4">
-                <div class="col-md-12"><h3>제 목</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <input type="text" name="title" class="form-control" placeholder="제목을 작성해주세요">
+              <div class="form-group mb-4">
+                <div class="form-row">
+                  <div class="col-md-12"><h3>제 목</h3></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    <input type="text" name="title" class="form-control" placeholder="제목을 작성해주세요">
+                  </div>
                 </div>
               </div>
 	
+	
 			  <!-- 내용 -->
-              <div class="row form-group">
-                <div class="col-md-12"><h3>내 용</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <textarea name="content" class="form-control" id="" cols="30" rows="5" placeholder="내용을 작성해주세요"></textarea>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12"><h3>내 용</h3></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    <textarea name="content" class="form-control" id="" cols="30" rows="5" placeholder="내용을 작성해주세요"></textarea>
+                  </div>
                 </div>
               </div>
+			  <br>
 
-			<br>
 
 			 <!-- 도서 취향정보 -->
-
-			<label class="font-weight-bold" for="bookType">도 서 &nbsp;&nbsp;정 보</label>
-					<div class="row">			
- 					  <!-- 분류 -->
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+			 <div class="form-group">
+			   <div class="form-row">
+			     <label class="font-weight-bold" for="bookType">도 서 &nbsp;&nbsp;정 보</label>
+			   </div>
+			   
+			   <!-- 분류 -->
+			   <div class="form-row">
+			     <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <div class="select-wrap">
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
                           <select name="bookType" id="bookType" class="form-control">
@@ -107,10 +130,11 @@
                             <option value="소설">소설</option>
                           </select>
                         </div>
-                      </div>
- 
- 					  <!--취향 -->
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                 </div>
+                 
+                 
+                 <!--취향 -->
+                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <div class="select-wrap">
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
                           <select name="favorite" id="" class="form-control">
@@ -122,10 +146,11 @@
                             <option value="화려한 판타지/SF">화려한 판타지/SF</option>
                           </select>
                         </div>
-                      </div>
-                      
-                      <!-- 난이도 -->
-					  <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  </div>
+                  
+                  
+                  <!-- 난이도 -->
+				  <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <div class="select-wrap">
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
                           <select name="bookLevel" id="" class="form-control">
@@ -135,37 +160,38 @@
                             <option value="하">하</option>
                           </select>
                         </div>
-                      </div>
-                      
-			  	  </div>
-			  	  
-			  <br>	
-			  <p>* 도서별로 지정된 값을 선택해주세요</p>
-			  
-			  <br>
-
-
+                  </div>
+			   </div>
+			 
+			   <br>
+               <p>* 도서별로 지정된 값을 선택해주세요</p>
+               
+			 </div>
+			 
+			 
+			 
             <!-- 추천 점수 -->
-			<label class="font-weight-bold" for="score">추 천 &nbsp;&nbsp;점 수</label>
-			
-				<div class="row">
-					<div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-						<input type="number" name="score" id="score" class="form-control" min="1" max="10" value="1">
-                    </div>
-                </div>
-                
-                
-
-				<br><br>
-
-			  <!-- 게시글 작성 버튼 -->
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="게시글 작성" class="btn btn-primary  py-2 px-5">
-                </div>
+            <div class="form-group">
+              <div class="form-row">
+                <label class="font-weight-bold" for="score">추 천 &nbsp;&nbsp;점 수</label>
               </div>
+              <div class="form-row">
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+				 	<input type="number" name="score" id="score" class="form-control" min="1" max="10" value="1">
+                </div>
+              </div>  
+            </div>
+            
 
-  
+            <!-- 게시글 작성 버튼 -->
+            
+            <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                <input type="submit" value="게시글 작성" class="btn btn-primary  py-2 px-5">
+              </div>
+            </div>
+            
+             
             </form>
             <!-------------- 게시글 양식 END--------------->
             
@@ -187,7 +213,6 @@
   
   
     <!-- web page loading 시 초기화 로직 -->
-    
     <script src="<c:url value='/post/initPost.js'/>"></script>
      
      

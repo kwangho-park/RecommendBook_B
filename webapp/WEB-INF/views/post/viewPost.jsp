@@ -44,88 +44,109 @@
 
     
     
-
+    <!-- ---------------section-------------- -->
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
-       
           <div class="col-md-12 col-lg-8 mb-5">
           
             
           <!-------------- 게시글 양식 --------------->
   
-              <div class="row form-group">
-                <div class="col-md-12"><h3>도 서 명</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">
-				  ${requestScope.dto.bookName }
+              <!-- 도서명 -->
+              <div class="form-group">
+              	<div class="form-row">
+                  <label class="font-weight-bold" for="bookName">도 서 명</label>
+              	</div>
+              	<div class="form-row">
+                  <div class="col-md-6 mb-3 mb-md-0">
+                    ${requestScope.dto.bookName }
+                  </div>
+              	</div>
+              </div>
+  
+  
+			  <!-- 작가명 -->
+              <div class="form-group mb-5">
+                <div class="form-row">
+                  <label class="font-weight-bold" for="writer">작 가 명</label>
+                </div>
+   				<div class="form-row">
+   				  <div class="col-md-6 mb-3 mb-md-0">
+                    ${requestScope.dto.writer }
+                  </div>
+   				</div>             
+              </div>
+  
+  
+  
+			  <!-- 제목 -->
+              <div class="form-group mb-4">
+                <div class="form-row">
+                  <div class="col-md-12"><h3>제 목</h3></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    ${requestScope.dto.title }
+                  </div>
                 </div>
               </div>
 
-              <div class="row form-group mb-5">
-                <div class="col-md-12"><h3>작 가 명</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">                  
-                  ${requestScope.dto.writer }                  
+
+			  <!-- 내용 -->
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12"><h3>내 용</h3></div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    ${requestScope.dto.content }
+                  </div>
                 </div>
               </div>
-
-
-
-              <div class="row form-group mb-4">
-                <div class="col-md-12"><h3>제 목</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">
-                  ${requestScope.dto.title }
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12"><h3>내 용</h3></div>
-                <div class="col-md-12 mb-3 mb-md-0">
-                  ${requestScope.dto.content }
-                </div>
-              </div>
-			<br>
-
-
-
-			<!-- 도서 취향정보 -->
-			<div class="row form-group">
-				<div class="col-md-12"><h3>도 서 &nbsp;&nbsp;정 보</h3></div>
-					<div class="row">			
- 					  <!-- 분류 -->
- 					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						분류 : ${requestScope.dto.bookType}, &nbsp;&nbsp;
-
- 					  <!--취향 -->
-						취향 : ${requestScope.dto.favorite }, &nbsp;&nbsp;
-                      
-                      <!-- 난이도 -->
-						난이도 : ${requestScope.dto.bookLevel}
-                      
-			  	  </div>
-			  </div>
-
 			  <br>
+			  
+			  
+			 <!-- 도서 취향정보 -->
+			 <div class="form-group">
+			   <div class="form-row">
+			     <label class="font-weight-bold" for="bookType">도 서 &nbsp;&nbsp;정 보</label>
+			   </div>
 
-			<!-- 추천 점수 -->
-			<div class="row form-group">
-				<div class="col-md-12"><h3>추 천 &nbsp;&nbsp;점 수</h3></div>
-				<div class="row">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					${requestScope.dto.score }
-				</div>
-			</div>
+			   <div class="form-row">
+				<!-- 분류 -->
+				분류 : ${requestScope.dto.bookType}, &nbsp;&nbsp;
 
-                
-               
-			<br><br>
-
-
-			  <!-- 게시글 작성 버튼 -->
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn btn-primary  py-2 px-5">
+ 				<!--취향 -->
+				취향 : ${requestScope.dto.favorite }, &nbsp;&nbsp;
+                      
+                <!-- 난이도 -->
+				난이도 : ${requestScope.dto.bookLevel}
+               </div>
+             </div>
+     
+			 
+            <!-- 추천 점수 -->
+            <div class="form-group">
+              <div class="form-row">
+                <label class="font-weight-bold" for="score">추 천 &nbsp;&nbsp;점 수</label>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+				 	${requestScope.dto.score }
                 </div>
               </div>  
+            </div>
+
+
+
+            <!-- 게시글 수정 버튼 -->
+            
+            <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                <input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn btn-primary  py-2 px-5">
+              </div>
+            </div>
 
 
             <!-------------- 게시글 양식 END--------------->
