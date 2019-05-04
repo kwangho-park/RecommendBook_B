@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+
+	
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+     
+<link rel="stylesheet" href="<c:url value='/fonts/icomoon/style.css'/>">
+    
+<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/magnific-popup.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/owl.carousel.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/owl.theme.default.min.css'/>">
+<link rel="stylesheet" href="<c:url value='//css/bootstrap-datepicker.css'/>">
+<link rel="stylesheet" href="<c:url value='//css/animate.css'/>">
+    
+        
+<link rel="stylesheet" href="<c:url value='/fonts/flaticon/font/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/fl-bigmug-line.css'/>">
+  
+<link rel="stylesheet" href="<c:url value='/css/aos.css'/>">
+
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
