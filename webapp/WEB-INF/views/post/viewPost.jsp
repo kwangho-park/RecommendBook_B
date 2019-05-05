@@ -139,14 +139,22 @@
             </div>
 
 
+            <!-- 게시글 삭제 / 수정 버튼 -->    
+    		 <div class="row form-inline">
+			  	<div class="form-group">
+	               	<form name="deletePost" action="/RecommendBook_B/post/deletePost" onsubmit="return deleteBtn()" method="post">
+    	            
+        	          <!-- [추후] 변경예정 -->
+				      <!-- [hidden] 게시글 삭제를 위한 DB table의 num값을 보관 -->
+                	  <input type="hidden" name="num" value="${requestScope.dto.num}">
+                  
+                	  <input type="submit" value="게시글 삭제" id="deletePostBtn"  class="btn btn-primary  py-2 px-5"> &nbsp;&nbsp;  
+               		</form>				   	
+					
+					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn btn-primary  py-2 px-5">
 
-            <!-- 게시글 수정 버튼 -->
-            
-            <div class="row">
-              <div class="col-md-12" style="text-align:center">
-                <input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn btn-primary  py-2 px-5">
-              </div>
-            </div>
+			  	</div>
+			 </div>
 
 
             <!-------------- 게시글 양식 END--------------->
@@ -168,6 +176,14 @@
   
   <!-- javascript link -->
   <%@ include file="/WEB-INF/views/common/jsLink.jspf"%>
+  
+  
+  
+  <!-- 게시글 삭제 로직  --> 
+  <script src="<c:url value='/post/deleteBtn.js'/>"></script>
+    
+  <script src="<c:url value='/post/postValidation.js'/>"></script>
+  
     
   </body>
 </html>

@@ -92,7 +92,7 @@
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               
                 <li class="nav-item">
-                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Find A Book</a>
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Search A Book</a>
                 </li>
  
               </ul>
@@ -212,7 +212,7 @@
               
               <div class="unit-3-body">
                 <p>  작가 : ${list.writer }  </p>
-                <p>  추천 점수 : ${list.averageScore }  </p>
+                <p>  평균 추천점수 : ${list.averageScore }  </p>
               </div>
             </div>
           </div>
