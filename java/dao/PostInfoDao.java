@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -45,6 +46,7 @@ public class PostInfoDao {
 				postInfoDto.getBookLevel(), postInfoDto.getScore()
 
 		);
+
 	}
 
 	
@@ -93,6 +95,11 @@ public class PostInfoDao {
 	// 특정 게시글(num)을 조회 //
 	public PostInfoDto selectPost(int num) {
 	
+		try {
+			
+		}catch(EmptyResultDataAccessException e) {
+			return null;
+		}
 		PostInfoDto result = jdbcTemplate.queryForObject(
 				
 				"SELECT * FROM postInfo WHERE num = ?",
@@ -119,7 +126,7 @@ public class PostInfoDao {
 				    }
 		});
 		
-		
+
 		return result;
 		
 	} // selectPost() END

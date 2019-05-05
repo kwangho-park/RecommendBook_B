@@ -72,7 +72,7 @@ public class PostController {
 		
 		
 		
-		// [aspect] 실행 // 
+		// [aspect] postAspect 실행 // 
 
 		
 		return "/home";
@@ -95,7 +95,7 @@ public class PostController {
 		int score_before = postInfoDto.getScore();
 		
 		
-		// 추천정보 조회 // 
+		// 도서정보 조회 // 
 		recommendInfoDto = recommendInfoDao.select(command.getBookName());
 		recommendInfoDto_before = recommendInfoDao.select(bookName_before);
 		
@@ -103,30 +103,40 @@ public class PostController {
 		// 도서명 변경 시
 		if(!command.getBookName().equals(bookName_before)) {
 		
-			// 추천정보 업데이트 of 삽입
+			// 도서 추천정보Table에 변경된 도서명이 존재 할 경우
 			if(recommendInfoDto != null) {
 				
-				// service logic
+				// [service] 새로운 도서 추천정보의 평균점수 연산
 				averageScoreCal.addition(command.getScore(), recommendInfoDto);
 			
 				
-				// DAO
+				// [dao] 도서 추천정보 업데이트
 				recommendInfoDao.update(recommendInfoDto);
 				
 				
+				
+			// 도서 추천정보Table에 변경된 도서명이 존재 하지 않을 경우
 			}else {
 				recommendInfoDao.insert(command);
 			}			
+			
+			
+			// 변경전 도서 추천정보table 업데이트
+			// 인자로전달한 dto에 직접 접근하여 setting
+			averageScoreCal.subtraction(score_before, recommendInfoDto_before);
+			
+			recommendInfoDao.update(recommendInfoDto_before);					
+			
 			
 			
 			
 		// 도서명 동일 + 추천점수 변경 시 
 		}else if((command.getBookName().equals(bookName_before)) &&(command.getScore() != score_before)) {
 
-			// [service] 
+			// [service] 평균값 업데이트
 			averageScoreCal.modify(command.getScore(), score_before, recommendInfoDto);
 			
-			// [dao]
+			// [dao] 도서 추천정보 업데이트
 			recommendInfoDao.update(recommendInfoDto);
 		}
 		
@@ -138,7 +148,7 @@ public class PostController {
 		
 		
 		
-		// [aspect] 실행 //
+		// [aspect] postAspect 실행 //
 		
 
 		return "/home"; 
@@ -152,8 +162,8 @@ public class PostController {
 	
 	// 특정(num) 게시글을 삭제 요청 // 
 	// 게시글 삭제 + 추천정보 업데이트
-	@RequestMapping(value="/post/deletePost", method=RequestMethod.GET)
-	public String deletePost(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
+	public String deletePost(PostInfoDto command, HttpServletRequest request, HttpServletResponse response) {
 		
 		int num = Integer.parseInt((request.getParameter("num")));
 		
@@ -183,6 +193,9 @@ public class PostController {
 		
 		
 		request.setAttribute("deleteSuccess", true );	// 경고창 출력용 setting
+		
+		
+		// [aspect] postAspect 실행 //
 		
 		
 		return "/home";

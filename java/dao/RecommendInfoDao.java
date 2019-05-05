@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -29,31 +30,40 @@ public class RecommendInfoDao {
 	public RecommendInfoDto select(String bookName) {
 		
 		
-		RecommendInfoDto result = jdbcTemplate.queryForObject(
+		try {
 			
-				"SELECT * FROM recommendInfo WHERE bookName = ?",
-				
-				new  Object[] {bookName},			// SQL parameter
-				
-				// rs.next() 역활
-				new RowMapper<RecommendInfoDto>() {
-					public RecommendInfoDto mapRow(ResultSet rs, int rowNum) throws SQLException{
-						
-						RecommendInfoDto recommendInfoDto = new RecommendInfoDto();
-						
-						recommendInfoDto.setAverageScore(rs.getInt("averageScore"));
-						recommendInfoDto.setCounter(rs.getInt("counter"));
-						
-						
-						recommendInfoDto.setBookName(bookName);	// DB에서 조회한건아니지만.. 설정의 편의를 위해 셋팅
-						
-						return recommendInfoDto;
+			RecommendInfoDto result = jdbcTemplate.queryForObject(
+					
+					"SELECT * FROM recommendInfo WHERE bookName = ?",
+					
+					new  Object[] {bookName},			// SQL parameter
+					
+					// rs.next() 역활
+					new RowMapper<RecommendInfoDto>() {
+						public RecommendInfoDto mapRow(ResultSet rs, int rowNum) throws SQLException{
+							
+							RecommendInfoDto recommendInfoDto = new RecommendInfoDto();
+							
+							recommendInfoDto.setAverageScore(rs.getInt("averageScore"));
+							recommendInfoDto.setCounter(rs.getInt("counter"));
+							
+							
+							recommendInfoDto.setBookName(bookName);	// DB에서 조회한건아니지만.. 설정의 편의를 위해 셋팅
+							
+							return recommendInfoDto;
+						}
 					}
-				}
-				
-		);
-				
-		return result;
+					
+			);			
+			
+			return result;
+			
+			
+		// 추천 도서정보에 도서명이 없을 경우를 처리
+		}catch(EmptyResultDataAccessException e){
+			return null;
+		}
+
 		
 	} // select() END
 	
