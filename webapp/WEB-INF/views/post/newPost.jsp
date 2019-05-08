@@ -187,7 +187,7 @@
             
             <div class="row">
               <div class="col-md-12" style="text-align:center">
-                <input type="submit" value="게시글 작성" class="btn btn-primary  py-2 px-5">
+                <input type="submit" value="게시글 작성" class="btn bg-warning text-white  py-2 px-5">
               </div>
             </div>
             

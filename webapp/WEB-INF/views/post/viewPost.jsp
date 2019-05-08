@@ -139,25 +139,94 @@
             </div>
 
 
+          <!-- [추후] 변경예정 -->
+	      <!-- [hidden] 게시글 삭제+조회를 위한 DB table의 num값을 보관 -->
+       	  <input type="hidden" name="postNum" value="${requestScope.dto.num}">
+                  
+
             <!-- 게시글 삭제 / 수정 버튼 -->    
     		 <div class="row form-inline">
 			  	<div class="form-group">
-	               	<form name="deletePost" action="/RecommendBook_B/post/deletePost" onsubmit="return deleteBtn()" method="post">
+					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn bg-warning text-white py-2 px-5">
+
+	               	<form name="deletePost" action="/RecommendBook_B/post/deletePost" onsubmit="return deletePostBtn()" method="post"> &nbsp;&nbsp;
     	            
-        	          <!-- [추후] 변경예정 -->
-				      <!-- [hidden] 게시글 삭제를 위한 DB table의 num값을 보관 -->
-                	  <input type="hidden" name="num" value="${requestScope.dto.num}">
-                  
-                	  <input type="submit" value="게시글 삭제" id="deletePostBtn"  class="btn btn-primary  py-2 px-5"> &nbsp;&nbsp;  
+
+                	  <input type="submit" value="게시글 삭제" id="deletePostBtn"  class="btn bg-warning text-white py-2 px-5">  &nbsp;&nbsp;
                		</form>				   	
-					
-					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn btn-primary  py-2 px-5">
+
+					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='' " class="btn bg-warning text-white py-2 px-5">
+
 
 			  	</div>
 			 </div>
-
-
+			 
             <!-------------- 게시글 양식 END--------------->
+          
+          
+          
+          
+          
+          
+            <!------------- 댓글 양식 (임시) -------------->
+            <c:if test="${requestScope.commentList != null}">
+            <c:forEach var="comment" items="${requestScope.commentList }" >
+            
+	            <div class="form-group">
+			   		<div class="form-row">
+			     		<label class="font-weight-bold" for="bookType">이 름</label>
+				    </div>
+			   		<div class="form-row">
+				     	${comment.userName}
+			   		</div>
+				</div>            
+            
+                <div class="form-group">
+			   		<div class="form-row">
+					    <label class="font-weight-bold" for="bookType">PW</label>
+			   		</div>
+			    	<div class="form-row">
+			     		***** 
+			    	</div>
+				</div>
+			
+            	<div class="form-group">
+			   		<div class="form-row">
+			     		<label class="font-weight-bold" for="bookType">content</label>
+			   		</div>
+			   		<div class="form-row">
+			     		${comment.content}
+				   </div>
+				</div>		
+				
+				
+				
+ 				<!-- 댓글 삭제 / 수정 버튼 -->    
+    			<div class="row form-inline">
+				  	<div class="form-group">
+			  	
+			  		  	<input type="button" value="댓글 수정" id="modifyCommentBtn" onclick="" class="btn bg-warning text-white py-2 px-5"> &nbsp;&nbsp;
+			  	  	
+	               		<form name="deleteComment" action="/RecommendBook_B/comment/delete" onsubmit="return deleteCommentBtn()" method="post">
+                	  		<input type="submit" value="댓글 삭제" id="deleteCommentBtn"  class="btn bg-warning text-white py-2 px-5">
+                	  		
+                	  		<!-- [추후] 변경예정 -->
+							<!-- [hidden] 댓글 삭제를 위한 댓글 번호 보관-->
+							<input type="hidden" name="commentNum" value="${comment.num}">
+ 					
+               			</form>				   	
+					
+			  		</div>
+				</div>
+
+            	<!------------- 댓글 양식 (임시) END -------------->
+          
+ 					
+            </c:forEach>
+            </c:if>
+            
+
+          
           
           </div>
 
@@ -168,7 +237,7 @@
 
 
 
-           <!------------------ 댓글 양식 ---------------->
+<!------------------ 댓글 양식(bootstrap CDN) ---------------->
 <!--           
 <div class="panel panel-default">
   <div class="panel-heading">Panel heading without title</div>
@@ -176,6 +245,7 @@
     Panel content
   </div>
 </div>
+
 
 <div class="panel panel-default">
   <div class="panel-heading">
