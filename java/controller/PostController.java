@@ -165,7 +165,7 @@ public class PostController {
 	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
 	public String deletePost(PostInfoDto command, HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt((request.getParameter("num")));
+		int num = Integer.parseInt(request.getParameter("postNum"));
 		
 		
 		// 삭제 대상 post정보를 조회 // 
@@ -212,12 +212,16 @@ public class PostController {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
+	
 		postInfoDto = postInfoDao.selectPost(num);
 		
 		// request에 게시글을 정보를 저장하고있는 DTO 셋팅
 		request.setAttribute("dto", postInfoDto);
 				
 				
+		///////// [aspect] commentAspect 실행 : 댓글 조회 실행예정 //
+		
+		
 		return "/post/viewPost";
 	} // viewPost() END
 
