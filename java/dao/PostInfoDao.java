@@ -50,44 +50,6 @@ public class PostInfoDao {
 	}
 
 	
-
-	
-	// 게시글 리스트를 조회 //
-	public List<PostInfoDto> selectAllPost() {
-		
-		List<PostInfoDto> results = jdbcTemplate.query(
-		
-				"SELECT * FROM postInfo ORDER BY num ASC",
-				
-				new RowMapper<PostInfoDto>() {
-					
-					@Override
-					public PostInfoDto mapRow(ResultSet rs, int rowNum) throws SQLException{
-						
-						PostInfoDto postInfoDto = new PostInfoDto(
-								
-								rs.getInt("num"),
-								rs.getString("bookName"),
-								rs.getString("writer"),
-								rs.getString("title"),
-								rs.getString("content"),
-								rs.getString("bookType"),
-								rs.getString("favorite"),
-								rs.getString("bookLevel"),
-								rs.getInt("score")
-								);
-						
-						return postInfoDto;	
-					}
-				}
-				
-				); 
-
-			return results.isEmpty() ? null : results ;		// usEmpty true = null 출력
-		
-	} // selectAllPost() END
-
-	
 	
 	
 	
@@ -200,6 +162,7 @@ public class PostInfoDao {
 		
 				"SELECT * FROM postInfo ORDER BY num DESC LIMIT ?, ?",
 				
+				// next() 역활
 				new RowMapper<PostInfoDto>() {
 					
 					@Override
