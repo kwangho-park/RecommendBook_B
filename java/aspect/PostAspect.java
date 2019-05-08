@@ -17,6 +17,7 @@ import dto.PostInfoDto;
 import service.PostPaging;
 
 // post page에 적용하는 aspect 객체 // 
+// 현재 page의 post list를 출력
 @Aspect
 public class PostAspect {
 	
