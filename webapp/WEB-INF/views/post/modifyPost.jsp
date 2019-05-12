@@ -64,7 +64,7 @@
               
               <!-- [추후] 변경예정 -->
 			  <!-- [hidden] 게시글 수정을 위한 DB table의 num값을 보관 -->
-			  <input type="hidden" name="num" value="${requestScope.dto.num}">
+			  <input type="hidden" name="postNum" value="${requestScope.dto.postNum}">
               
               <!-- 도서명 -->
               <div class="form-group">

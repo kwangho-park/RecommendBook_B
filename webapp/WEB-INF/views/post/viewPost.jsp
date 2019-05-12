@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Recommend Book &mdash; for you</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,8 +15,13 @@
 	<%@ include file="/WEB-INF/views/common/link.jspf"%>
 
     
-  </head>
-  <body>
+</head>
+
+<c:if test="${requestScope.modifyFlag == true}">
+	<script> alert("댓글이 저장되었습니다")</script>
+</c:if>
+
+<body>
   
   <div class="site-wrap">
   
@@ -139,39 +144,41 @@
             </div>
 
 
-          <!-- [추후] 변경예정 -->
-	      <!-- [hidden] 게시글 삭제+조회를 위한 DB table의 num값을 보관 -->
-       	  <input type="hidden" name="postNum" value="${requestScope.dto.num}">
-                  
+ 
 
-            <!-- 게시글 삭제 / 수정 버튼 -->    
+            <!-- 게시글 삭제 / 수정 버튼 -->
+            <!-- 댓글 작성 버튼 -->    
     		 <div class="row form-inline">
 			  	<div class="form-group">
-					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?num=${requestScope.dto.num}'" class="btn bg-warning text-white py-2 px-5">
+					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?postNum=${requestScope.dto.postNum}'" class="btn bg-warning text-white py-2 px-5">
 
 	               	<form name="deletePost" action="/RecommendBook_B/post/deletePost" onsubmit="return deletePostBtn()" method="post"> &nbsp;&nbsp;
     	            
+          			  <!-- [추후] 변경예정 -->
+	      			  <!-- [hidden] 게시글 삭제를 위한 DB table의 num값을 보관 -->
+       	  			  <input type="hidden" name="postNum" value="${requestScope.dto.postNum}">
 
                 	  <input type="submit" value="게시글 삭제" id="deletePostBtn"  class="btn bg-warning text-white py-2 px-5">  &nbsp;&nbsp;
+                	  
                		</form>				   	
 
-					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='' " class="btn bg-warning text-white py-2 px-5">
+					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='/RecommendBook_B/comment/modifyComment' " class="btn bg-warning text-white py-2 px-5">
 
 
 			  	</div>
 			 </div>
-			 
+
             <!-------------- 게시글 양식 END--------------->
-          
-          
-          
-          
-          
-          
+
+
+
+
+
+
             <!------------- 댓글 양식 (임시) -------------->
             <c:if test="${requestScope.commentList != null}">
             <c:forEach var="comment" items="${requestScope.commentList }" >
-            
+
 	            <div class="form-group">
 			   		<div class="form-row">
 			     		<label class="font-weight-bold" for="bookType">이 름</label>
@@ -200,22 +207,27 @@
 				</div>		
 				
 				
-				
+				<!-- 추후 댓글의 아이디/pw 필터링 후 수정/삭제 -->
  				<!-- 댓글 삭제 / 수정 버튼 -->    
     			<div class="row form-inline">
 				  	<div class="form-group">
-			  	
-			  		  	<input type="button" value="댓글 수정" id="modifyCommentBtn" onclick="" class="btn bg-warning text-white py-2 px-5"> &nbsp;&nbsp;
+			  			
+			  		  	<input type="button" value="댓글 수정" id="modifyCommentBtn" onclick="location.href='/RecommendBook_B/comment/modify?commentNum=${comment.commentNum}'" class="btn bg-warning text-white py-2 px-5"> &nbsp;&nbsp;
 			  	  	
-	               		<form name="deleteComment" action="/RecommendBook_B/comment/delete" onsubmit="return deleteCommentBtn()" method="post">
-                	  		<input type="submit" value="댓글 삭제" id="deleteCommentBtn"  class="btn bg-warning text-white py-2 px-5">
+			  	  		<!-- [궁금증] onsubmit 의 function과 tag의 id를 동일한 이름으로 지정시 function이 동작하지않는 이유는?-->
+	               		<form name="deleteComment" action="/RecommendBook_B/comment/delete" onsubmit="return deleteComment()" method="post">
+                	  		<input type="submit" value="댓글 삭제" id="CommentCommentBtn"  class="btn bg-warning text-white py-2 px-5">
                 	  		
                 	  		<!-- [추후] 변경예정 -->
 							<!-- [hidden] 댓글 삭제를 위한 댓글 번호 보관-->
-							<input type="hidden" name="commentNum" value="${comment.num}">
+							<input type="hidden" name="commentNum" value="${comment.commentNum}">
+							
+							<!-- [추후] 변경예정 -->
+	      			  		<!-- [hidden] 게시글 조회 위한 DB table의 num값을 보관 -->
+       	  			  		<input type="hidden" name="postNum" value="${requestScope.dto.postNum}">
  					
-               			</form>				   	
-					
+               			</form>
+               							   	
 			  		</div>
 				</div>
 
@@ -272,8 +284,10 @@
   
   
   <!-- 게시글 삭제 로직  --> 
-  <script src="<c:url value='/post/deleteBtn.js'/>"></script>
+  <script src="<c:url value='/post/deletePostBtn.js'/>"></script>
     
+  <script src="<c:url value='/post/deleteComment.js'/>"></script>
+  
   <script src="<c:url value='/post/postValidation.js'/>"></script>
   
     
