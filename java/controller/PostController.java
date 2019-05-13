@@ -89,7 +89,7 @@ public class PostController {
 		
 		// 게시글 수정 전 data setting // 
 		
-		postInfoDto = postInfoDao.selectPost(command.getNum());
+		postInfoDto = postInfoDao.selectPost(command.getPostNum());
 
 		String bookName_before = postInfoDto.getBookName();
 		int score_before = postInfoDto.getScore();
@@ -165,11 +165,11 @@ public class PostController {
 	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
 	public String deletePost(PostInfoDto command, HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt(request.getParameter("postNum"));
+		int postNum = Integer.parseInt(request.getParameter("postNum"));
 		
 		
 		// 삭제 대상 post정보를 조회 // 
-		postInfoDto = postInfoDao.selectPost(num);
+		postInfoDto = postInfoDao.selectPost(postNum);
 		
 		String bookName = postInfoDto.getBookName();
 		int score		= postInfoDto.getScore();
@@ -184,18 +184,18 @@ public class PostController {
 		// 인자로전달한 dto에 직접 접근하여 setting
 		averageScoreCal.subtraction(score, recommendInfoDto);
 		
-		recommendInfoDao.update(recommendInfoDto);		// 에러발생
+		recommendInfoDao.update(recommendInfoDto);
 		
 		
 		// post 삭제 //
-		postInfoDao.deletePost(num);
+		postInfoDao.deletePost(postNum);
 		
 		
 		
 		request.setAttribute("deleteSuccess", true );	// 경고창 출력용 setting
 		
 		
-		// [aspect] postAspect 실행 //
+		// [aspect] postAspect : 현재 page의 post list 출력 //
 		
 		
 		return "/home";
@@ -210,16 +210,16 @@ public class PostController {
 	@RequestMapping(value="/post/viewPost", method=RequestMethod.GET)
 	public String viewPost(HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		int postNum = Integer.parseInt(request.getParameter("postNum"));
 		
 	
-		postInfoDto = postInfoDao.selectPost(num);
+		postInfoDto = postInfoDao.selectPost(postNum);
 		
 		// request에 게시글을 정보를 저장하고있는 DTO 셋팅
 		request.setAttribute("dto", postInfoDto);
 				
-				
-		///////// [aspect] commentAspect 실행 : 댓글 조회 실행예정 //
+
+		///////// [aspect] Post2Aspect 실행 : 댓글 조회 실행예정 //
 		
 		
 		return "/post/viewPost";
@@ -232,9 +232,9 @@ public class PostController {
 	@RequestMapping(value="/post/modifyPost", method=RequestMethod.GET)
 	public String modifyPost(HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		int postNum = Integer.parseInt(request.getParameter("postNum"));
 		
-		postInfoDto = postInfoDao.selectPost(num);
+		postInfoDto = postInfoDao.selectPost(postNum);
 		
 		// request에 게시글을 정보를 저장하고있는 DTO 셋팅
 		request.setAttribute("dto", postInfoDto);

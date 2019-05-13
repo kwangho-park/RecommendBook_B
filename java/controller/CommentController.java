@@ -24,11 +24,11 @@ public class CommentController {
 	@RequestMapping(value="/comment/delete", method=RequestMethod.POST)
 	public String aspectDelete(HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt(request.getParameter("commentNum"));
+		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
 		
 		
 		// 댓글 삭제 로직 (DAO)
-		commentInfoDao.delete(num);
+		commentInfoDao.delete(commentNum);
 		
 		
 		
@@ -36,21 +36,25 @@ public class CommentController {
 		
 
 		return "/post/viewPost";
-	}
+	} // aspectDelete() END
+	
+	
 	
 	// 특정 댓글 수정 //
 	@RequestMapping(value="/comment/modify", method=RequestMethod.GET)
 	public String modify(HttpServletRequest request, HttpServletResponse response) {
 		
-		int num = Integer.parseInt(request.getParameter("commentNum"));
+		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
 		
 		// 댓글 조회
-		commentInfoDto = commentInfoDao.select(num);
+		commentInfoDto = commentInfoDao.select(commentNum);
 
 		request.setAttribute("comment",commentInfoDto);
 		
 		return "/comment/modifyComment";
-	}
+	} // modify() END
+	
+	
 	
 	
 	// 특정 댓글 저장 // 
@@ -61,12 +65,45 @@ public class CommentController {
 		// 댓글 저장
 		commentInfoDao.save(commentInfoDto);
 		
+		request.setAttribute("saveFlag",true);
 		
 		// [Aspect] commentAspect : 게시글 조회, 댓글 조회
 		
 		
 		return "/post/viewPost";
-	}
+	}// aspectSave() END
+	
+	
+	
+
+	// 신규 댓글 작성 //
+	@RequestMapping(value="/comment/newComment", method=RequestMethod.GET)
+	public String newComment(HttpServletRequest request, HttpServletResponse response) {
+		
+		int postNum = Integer.parseInt(request.getParameter("postNum"));
+		
+		request.setAttribute("postNum",postNum);
+		
+		return "/comment/newComment";
+	}// newComment() END
+	
+	
+
+	// 신규 댓글 저장 - test //
+	@RequestMapping(value="/comment/newSave",method=RequestMethod.POST)
+	public String aspectNewSave(CommentInfoDto commentInfoDto, HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		// 댓글 저장
+		commentInfoDao.newSave(commentInfoDto);
+		
+		request.setAttribute("saveFlag",true);
+				
+		
+		// [Aspect] commentAspect : 게시글 조회, 댓글 조회
+		
+		return "/post/viewPost";
+	} // aspectNewSave() END
 	
 	
 }// CommentController END
