@@ -91,13 +91,14 @@
             <div class="job-search">
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               
+              
                 <li class="nav-item">
-                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Search A Book</a>
+                  <a class="nav-link bg-warning text-white py-3" id="pills-job-tab" data-toggle="pill" href="" role="tab" aria-controls="pills-job" aria-selected="true">Search A Book</a>
                 </li>
  
               </ul>
-              
-              <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+              <!-- bg-white -->
+              <div class="tab-content bg-khStyle p-4 rounded" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
                 
                   <!-- 도서 검색 정보 -->              
@@ -164,9 +165,9 @@
 					  <!-- [hidden] 게시글 출력을 위한 pageNum값 보관 -->
 					  <input type="hidden" name="num" value="${requestScope.pageNum}">
  	
- 
+                 
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="submit" class="btn btn-primary btn-block" value="도서 검색">
+                        <input type="submit" class="btn bg-warning text-white btn-block" value="도서 검색">
                       </div>
     
                       
@@ -261,7 +262,7 @@
 						<span class="bg-info text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
 					</c:when>
 					<c:when test="${dto.bookLevel == '하'}">
-						<span class="bg-warning text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
+						<span class="bg-success text-white badge py-2 px-4">난이도 : ${dto.bookLevel }</span>
 					</c:when>
 				</c:choose>
                    
@@ -279,7 +280,7 @@
 
 			  <!-- 게시글 보기 -->
               <div class="ml-auto">
-                <a href="/RecommendBook_B/post/viewPost?num=${dto.num }" class="btn btn-primary py-2">게시글 보기</a>
+                <a href="/RecommendBook_B/post/viewPost?postNum=${dto.postNum }" class="btn bg-warning text-white py-2">게시글 보기</a>
               </div>
            </div>
 

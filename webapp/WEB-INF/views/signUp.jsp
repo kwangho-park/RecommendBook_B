@@ -185,7 +185,7 @@
 			        <input type="text" name="postCode" id="postCode" class="form-control" placeholder="우편번호">
 			      </div>
 			      <div class="col-md-4">
-			        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"  class="btn btn-primary  py-2 px-4">
+			        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"  class="btn bg-warning text-white  py-2 px-4">
 			      </div>
 			    </div>
 				      
@@ -216,7 +216,7 @@
 			<!-- 회원가입 버튼 -->
               <div class="row">
                 <div class="col-md-12" style="text-align:center">
-                  <input type="submit" value="회원가입" class="btn btn-primary  py-2 px-4">
+                  <input type="submit" value="회원가입" class="btn bg-warning text-white  py-2 px-4">
                 </div>
               </div>
             

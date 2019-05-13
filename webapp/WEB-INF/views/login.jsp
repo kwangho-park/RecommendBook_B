@@ -6,15 +6,15 @@
 <head>
     <title>Recommend Book &mdash; for you</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="login" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- [bootstrap] link -->
 	<%@ include file="/WEB-INF/views/common/link.jspf"%>
 
 </head>
   
-  
-  
+
+
   
 <%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
@@ -81,7 +81,7 @@
     		 <!-- 일반/kakao 로그인 버튼 -->
     		 <div class="row form-inline">
 			  	<div class="form-group">
-				   	<input type="submit" value="로그인" class="btn btn-primary  py-2 px-4"> &nbsp;&nbsp;&nbsp;
+				   	<input type="submit" value="로그인" class="btn bg-warning text-white  py-2 px-4"> &nbsp;&nbsp;&nbsp;
 				   	
 				   	<a href='javascript:loginKakao()'>
 					<img src="<c:url value='/images/login.png'/>" >

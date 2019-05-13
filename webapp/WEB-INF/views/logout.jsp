@@ -52,7 +52,7 @@
     		 <div class="form-inline">
 			  	<div class="form-group">
 
-					<input type="button" onclick="logoutBtn()" value="로그아웃"  class="btn btn-primary  py-2 px-4"><br>
+					<input type="button" onclick="logoutBtn()" value="로그아웃"  class="btn bg-warning text-white  py-2 px-4"><br>
 						
 			  	</div>
 			 </div>

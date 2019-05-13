@@ -128,7 +128,7 @@
                 <!-- 난이도 -->
 				난이도 : ${requestScope.dto.bookLevel}
                </div>
-             </div>
+            </div>
      
 			 
             <!-- 추천 점수 -->
@@ -148,7 +148,7 @@
 
             <!-- 게시글 삭제 / 수정 버튼 -->
             <!-- 댓글 작성 버튼 -->    
-    		 <div class="row form-inline">
+    		<div class="row form-inline">
 			  	<div class="form-group">
 					<input type="button" value="게시글 수정" id="modifyPostBtn" onclick="location.href='/RecommendBook_B/post/modifyPost?postNum=${requestScope.dto.postNum}'" class="btn bg-warning text-white py-2 px-5">
 
@@ -161,9 +161,7 @@
                 	  <input type="submit" value="게시글 삭제" id="deletePostBtn"  class="btn bg-warning text-white py-2 px-5">  &nbsp;&nbsp;
                 	  
                		</form>				   	
-
-					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='/RecommendBook_B/comment/modifyComment' " class="btn bg-warning text-white py-2 px-5">
-
+					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='/RecommendBook_B/comment/newComment?postNum=${requestScope.dto.postNum}' " class="btn bg-warning text-white py-2 px-5">
 
 			  	</div>
 			 </div>

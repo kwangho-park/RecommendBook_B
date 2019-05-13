@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+\<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 
@@ -22,7 +22,7 @@
                 <li class="menuBar"><a id="newPost" href="<c:url value='/post/newPost'/>">New post</a></li>
                 <li class="menuBar"><a id="signUp" href="<c:url value='/signUp'/>">Sign up</a></li>
                 
-                <li class="menuBar"><a id="loginHref" href="<c:url value='/login'/>"><span class="rounded bg-primary py-2 px-3 text-white" id="loginText">Login</span></a></li>
+                <li class="menuBar"><a id="loginHref" href="<c:url value='/login'/>"><span class="rounded bg-warning text-white py-2 px-3" id="loginText">Login</span></a></li>
                             
                             				
 <!-- 			// bootstrap 공부 후 업데이트 : span의 디자인 문제
