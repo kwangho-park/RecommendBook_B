@@ -195,6 +195,9 @@ public class PostController {
 		request.setAttribute("deleteSuccess", true );	// 경고창 출력용 setting
 		
 		
+		// 해당 post에 연결된 댓글 삭제 //
+		
+		
 		// [aspect] postAspect : 현재 page의 post list 출력 //
 		
 		
