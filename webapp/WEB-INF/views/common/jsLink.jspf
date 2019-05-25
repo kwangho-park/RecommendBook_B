@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-
+  <!-- [JS] bootstrap template -->
   <script src="<c:url value='/js/jquery-3.3.1.min.js'/>"></script>
   <script src="<c:url value='/js/jquery-migrate-3.0.1.min.js'/>"></script>
   <script src="<c:url value='/js/jquery-ui.js'/>"></script>
@@ -20,11 +20,17 @@
   
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete" async defer></script>
 
-  <!-- login flag를 검사 시 필요한 jQuery -->
+  <!-- jQuery : login flag를 검사 시 사용 -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
   
   
   <!-- menuBar setting -->
   <script src="<c:url value='/common/setMenuBar.js'/>"></script>
+  
+  
+  <!-- [bootstrap CDN] JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+  
   

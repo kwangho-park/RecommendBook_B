@@ -12,9 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-
    	<!-- bootstrap link -->
-	<%@ include file="/WEB-INF/views/common/link.jspf"%>
+	<%@ include file="/WEB-INF/views/common/cssLink.jspf"%>
 
 
 
@@ -77,8 +76,9 @@
 
 
 
-    <!-- 배경이미지 변경예정 /////// -->
-    <!-- 적용되지 않는 이미지가 있음....(무료 다운한 것, 카카오로그인버튼 이미지는 가능) -->
+    <!-- [장기적 고민] -->
+	<!-- chasing 문제로 추정 : 그러나 로컬서버에서 실행시는 해결되지않았으며, AWS hosting서버에서는 해결됨-->
+	<!-- 마치.. 로컬에 자원을 사용하지못하고 과거에 캐쉬메모리에 저장된 이미지자원을 사용하는것처럼 느껴짐 -->
 	<div class="site-blocks-cover" style="background-image: url(/RecommendBook_B/images/book2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
 
       <div class="container">

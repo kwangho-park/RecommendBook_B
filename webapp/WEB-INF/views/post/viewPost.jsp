@@ -7,12 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Recommend Book &mdash; for you</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
 	<!-- bootstrap link -->
-	<%@ include file="/WEB-INF/views/common/link.jspf"%>
+	<%@ include file="/WEB-INF/views/common/cssLink.jspf"%>
 
     
 </head>
@@ -22,7 +23,7 @@
 </c:if>
 
 <body>
-  
+
   <div class="site-wrap">
   
 	<!-- .site-mobile-menu -->
@@ -40,8 +41,10 @@
 		<%@ include file="/WEB-INF/views/common/menuBar.jspf"%>
     </header>
 
-	<!-- 배경//////변경예쩡 -->
-    <div class="unit-5 overlay" style="background-image: url('/RecommendBook_B/images/hero_bg_2.jpg');">
+	<!-- [장기적 고민] -->
+	<!-- chasing 문제로 추정 : 그러나 로컬서버에서 실행시는 해결되지않았으며, AWS hosting서버에서는 해결됨-->
+	<!-- 마치.. 로컬에 자원을 사용하지못하고 과거에 캐쉬메모리에 저장된 이미지자원을 사용하는것처럼 느껴짐 -->
+    <div class="unit-5 overlay" style="background-image: url('/RecommendBook_B/images/book1.jpg');">
       <div class="container text-center">
         <h2 class="mb-0">View Post</h2>
       </div>
@@ -57,7 +60,7 @@
           
             
           <!-------------- 게시글 양식 --------------->
-  
+  		  <div class="p-5 bg-white">
               <!-- 도서명 -->
               <div class="form-group">
               	<div class="form-row">
@@ -164,80 +167,67 @@
 					<input type="button" value="댓글 작성" id="newCommentBtn" onclick="location.href='/RecommendBook_B/comment/newComment?postNum=${requestScope.dto.postNum}' " class="btn bg-warning text-white py-2 px-5">
 
 			  	</div>
-			 </div>
+			  </div>
 
+			</div>
             <!-------------- 게시글 양식 END--------------->
 
+			<br>
 
 
 
 
-
-            <!------------- 댓글 양식 (임시) -------------->
+            <!------------------ 댓글 양식(bootstrap CDN) ---------------->
             <c:if test="${requestScope.commentList != null}">
-            <c:forEach var="comment" items="${requestScope.commentList }" >
+            <c:forEach var="comment" items="${requestScope.commentList }" >			  
+			<div class="p-5 bg-white">
 
-	            <div class="form-group">
-			   		<div class="form-row">
-			     		<label class="font-weight-bold" for="bookType">이 름</label>
-				    </div>
-			   		<div class="form-row">
-				     	${comment.userName}
-			   		</div>
-				</div>            
-            
-                <div class="form-group">
-			   		<div class="form-row">
-					    <label class="font-weight-bold" for="bookType">PW</label>
-			   		</div>
-			    	<div class="form-row">
-			     		***** 
-			    	</div>
-				</div>
-			
-            	<div class="form-group">
-			   		<div class="form-row">
-			     		<label class="font-weight-bold" for="bookType">content</label>
-			   		</div>
-			   		<div class="form-row">
-			     		${comment.content}
-				   </div>
-				</div>		
-				
-				
-				<!-- 추후 댓글의 아이디/pw 필터링 후 수정/삭제 -->
- 				<!-- 댓글 삭제 / 수정 버튼 -->    
-    			<div class="row form-inline">
-				  	<div class="form-group">
+  					<div class="form-row">
+    					<div class="form-group col-md-6">
+      						<label>Name</label><br>
+      						${comment.userName}
+    					</div>
+    				    <div class="form-group col-md-6">
+				            <label>Password</label><br>
+      						**** 
+    					</div>
+  				    </div>
+  				    <div class="form-row">
+  						<div class="form-group">
+	    					<label>Comment</label><br>
+    						${comment.content}
+  						</div>
+					</div>
+					
+					
+					<!-- 추후 댓글의 아이디/pw 필터링 후 수정/삭제 -->
+ 					<!-- 댓글 삭제 / 수정 버튼 -->    
+	    			<div class="row form-inline">
+					  	<div class="form-group">
 			  			
-			  		  	<input type="button" value="댓글 수정" id="modifyCommentBtn" onclick="location.href='/RecommendBook_B/comment/modify?commentNum=${comment.commentNum}'" class="btn bg-warning text-white py-2 px-5"> &nbsp;&nbsp;
+				  		  	<input type="button" value="댓글 수정" id="modifyCommentBtn" onclick="location.href='/RecommendBook_B/comment/modify?commentNum=${comment.commentNum}'" class="btn bg-warning text-white py-2 px-5"> &nbsp;&nbsp;
 			  	  	
-			  	  		<!-- [궁금증] onsubmit 의 function과 tag의 id를 동일한 이름으로 지정시 function이 동작하지않는 이유는?-->
-	               		<form name="deleteComment" action="/RecommendBook_B/comment/delete" onsubmit="return deleteComment()" method="post">
-                	  		<input type="submit" value="댓글 삭제" id="CommentCommentBtn"  class="btn bg-warning text-white py-2 px-5">
-                	  		
-                	  		<!-- [추후] 변경예정 -->
-							<!-- [hidden] 댓글 삭제를 위한 댓글 번호 보관-->
-							<input type="hidden" name="commentNum" value="${comment.commentNum}">
-							
-							<!-- [추후] 변경예정 -->
-	      			  		<!-- [hidden] 게시글 조회 위한 DB table의 num값을 보관 -->
-       	  			  		<input type="hidden" name="postNum" value="${requestScope.dto.postNum}">
- 					
-               			</form>
-               							   	
-			  		</div>
+				  	  		<!-- [궁금증] onsubmit 의 function과 tag의 id를 동일한 이름으로 지정시 function이 동작하지않는 이유는?-->
+	    	           		<form name="deleteComment" action="/RecommendBook_B/comment/delete" onsubmit="return deleteComment()" method="post">
+            	    	  		<input type="submit" value="댓글 삭제" id="CommentCommentBtn"  class="btn bg-warning text-white py-2 px-5">
+
+                		  		<!-- [추후] 변경예정 -->
+								<!-- [hidden] 댓글 삭제를 위한 댓글 번호 보관-->
+								<input type="hidden" name="commentNum" value="${comment.commentNum}">
+								
+								<!-- [추후] 변경예정 -->
+	      			  			<!-- [hidden] 게시글 조회 위한 DB table의 num값을 보관 -->
+	       	  			  		<input type="hidden" name="postNum" value="${requestScope.dto.postNum}">
+
+    	           			</form>
+
+				  		</div>
+					</div>
 				</div>
+            	</c:forEach>
+            	</c:if>			
+            	<!------------------ 댓글 양식 END ---------------->  
 
-            	<!------------- 댓글 양식 (임시) END -------------->
-          
- 					
-            </c:forEach>
-            </c:if>
-            
-
-          
-          
           </div>
 
         </div>
@@ -247,27 +237,33 @@
 
 
 
-<!------------------ 댓글 양식(bootstrap CDN) ---------------->
-<!--           
-<div class="panel panel-default">
-  <div class="panel-heading">Panel heading without title</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
+	<%--		  
+			<!------------------ 댓글 양식(수정부분) ---------------->
+			<div class="p-5 bg-white">
+				<form>
+  					<div class="form-row">
+    					<div class="form-group col-md-6">
+      						<label for="inputEmail4">Name</label>
+      						<input type="email" class="form-control" id="inputEmail4" placeholder="이름">
+    					</div>
+    				    <div class="form-group col-md-6">
+				            <label for="inputPassword4">Password</label>
+      						<input type="password" class="form-control" id="inputPassword4" placeholder="비밀번호">
+    					</div>
+  				    </div>
+  					<div class="form-group">
+    					<label for="inputAddress">content</label>
+    					<input type="text" class="form-control" id="inputAddress" placeholder="댓글을 작성해주세요">
+  					</div>
 
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>           
- -->
+					<button type="submit" class="btn btn-primary">댓글 수정</button>
+  					<button type="submit" class="btn btn-primary">댓글 삭제</button>
+				</form>
+			</div>
+			<!------------------ 댓글 양식 END ---------------->
+ --%>
 
-<!------------------ 댓글 양식 END ---------------->
 
 
   

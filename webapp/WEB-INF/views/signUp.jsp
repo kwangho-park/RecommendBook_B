@@ -14,7 +14,7 @@
     
     
 	<!-- bootstrap link -->
-	<%@ include file="/WEB-INF/views/common/link.jspf"%>
+	<%@ include file="/WEB-INF/views/common/cssLink.jspf"%>
 
     
 </head>
@@ -52,13 +52,15 @@
     
     
     
-	<!-- 배경///////// 변경예정 -->
-	<!-- unit-5 class CSS -->
-    <div class="unit-5 overlay" style="background-image: url('images/hero_bg_2.jpg');">
+    <!-- [장기적 고민] -->
+	<!-- chasing 문제로 추정 : 그러나 로컬서버에서 실행시는 해결되지않았으며, AWS hosting서버에서는 해결됨-->
+	<!-- 마치.. 로컬에 자원을 사용하지못하고 과거에 캐쉬메모리에 저장된 이미지자원을 사용하는것처럼 느껴짐 -->
+    <div class="unit-5 overlay" style="background-image: url('/RecommendBook_B/images/book1.jpg');">
       <div class="container text-center">
         <h2 class="mb-0">Sign up</h2>
       </div>
-    </div>
+    </div>    
+    
 
     
 	<!---------------- -section --------------------->
