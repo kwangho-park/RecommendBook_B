@@ -1,5 +1,8 @@
 
 
+// menu bar + 모든 page의 button setting //
+
+
 // DOM 객체 로딩 후 실행되는 jQuery method
 $(function(){
 		
@@ -40,7 +43,7 @@ $(function(){
     
     if(loginFlag == null){	// logout 상태 
     	
-    	// [추후 업데이트 예정
+    	// [추후 업데이트 예정]
     	// $(".menuBar > #login").attr("href","/bootstrap/login").text	("Login");
     	
     	$(".menuBar #loginHref").attr("href","/RecommendBook_B/login")
@@ -56,9 +59,9 @@ $(function(){
     	
     	
     	// 댓글 작성/수정/삭제 버튼 비활성
-    	$("#newCommentBtn").attr('disabled',true);
-    	$("#modifyCommentBtn").attr('disabled',true);
-    	$("#CommentCommentBtn").attr('disabled',true);
+    	$(".form-group #newCommentBtn").attr('disabled',true);
+    	$(".form-group #modifyCommentBtn").attr('disabled',true);
+    	$(".form-group #CommentCommentBtn").attr('disabled',true);
 
     
     	
@@ -81,9 +84,9 @@ $(function(){
     	
     	
     	// 댓글 작성/수정/삭제 버튼 활성
-    	$("#newCommentBtn").attr('disabled',false);
-    	$("#modifyCommentBtn").attr('disabled',false);
-    	$("#CommentCommentBtn").attr('disabled',false);
+    	$(".form-group #newCommentBtn").attr('disabled',false);
+    	$(".form-group #modifyCommentBtn").attr('disabled',false);
+    	$(".form-group #CommentCommentBtn").attr('disabled',false);
 
     }
 
