@@ -1,0 +1,47 @@
+\<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+
+	
+    <header class="site-navbar py-1" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <!-- site name -->
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0"><a href="<c:url value='/home'/>" class="text-black h2 mb-0">Recommend<strong>Book</strong></a></h1>
+          </div>
+
+		  <!-- menu -->
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="menuBar"><a id="home" href="<c:url value='/home'/>" >Home</a></li>
+                <li class="menuBar"><a id="newPost" href="<c:url value='/post/newPost'/>">New post</a></li>
+                <li class="menuBar"><a id="signUp" href="<c:url value='/signUp'/>">Sign up</a></li>
+                
+                <li class="menuBar"><a id="loginHref" href="<c:url value='/login'/>"><span class="rounded bg-warning text-white py-2 px-3" id="loginText">Login</span></a></li>
+                            
+                            				
+<!-- 			// bootstrap 공부 후 업데이트 : span의 디자인 문제
+                <li class="menuBar"><a id="login" href="/bootstrap/login"><span class="rounded bg-primary py-2 px-3 text-white">Login</span></a></li>	
+ -->
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-xl-2 text-right d-block">
+            
+          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>
+	
+	
+	
